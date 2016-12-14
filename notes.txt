@@ -1,0 +1,52 @@
+// Create new document using model
+const me = new User({
+  firstName: 'Shakira',
+  lastName: 'Mendez',
+  userName: 'shakibebe',
+  email: 'shakira@gmail.com'
+});
+// Save the document
+me.save((err) => {
+  if (err) {
+    throw err;
+  }
+
+  // Search all
+  Product.find((err, product) => {
+    if (err) {
+      throw err;
+    }
+    console.log(product);
+    process.exit();
+  });
+
+// Search by ID
+User.findById('584f414e45abfa3a185b5dae', (err, users) => {
+  if (err) {
+    throw err;
+  }
+  console.log(users);
+  process.exit();
+});
+
+// Search by collections
+User.find({'_id': '584f414e45abfa3a185b5dae',},  (err, users) => {
+  if (err) {
+    throw err;
+  }
+  console.log(users);
+  process.exit();
+});
+
+// Search by Regular Expression
+const query = {
+  email: /sha/
+};
+
+User.findOne(query, (err, user) => {
+  if (err) {
+    throw err;
+  }
+  console.log(user);
+  process.exit();
+})
